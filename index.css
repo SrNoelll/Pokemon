@@ -1,0 +1,93 @@
+#sobre{
+    animation: levitate 3s ease-in-out infinite;
+    cursor: pointer;
+}
+body{
+    background-image: url('fondoPoke.webp');
+    background-size: cover;
+    background-attachment: fixed;
+}
+.hero{
+    height: calc(100vh - 80px);
+    background-size: cover;
+}
+.girar{
+    animation: rotate 0.1s 5 !important;
+}
+#content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    padding: 20px;
+    z-index: 1000;
+    height: 75vh;
+    max-width: 90vw;
+    overflow: hidden;
+}
+
+#content img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%; 
+}
+
+img.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+header{
+    background: rgb(255, 255, 0);
+    height: 80px;
+}
+header span a{
+    all: unset;
+    padding: 10px;
+    color: rgb(0, 112, 250);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+header span a:hover{
+    font-size: 1.2rem;
+}
+#loading {
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-image: url('pokeball.webp');
+    background-size: cover;
+    animation: spin 1s linear infinite;
+    display: none;
+}
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+@keyframes levitate {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+@keyframes rotate{
+    0%  {
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(365deg);
+    }
+}
