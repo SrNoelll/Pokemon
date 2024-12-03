@@ -4,26 +4,29 @@ const loading = document.querySelector("#loading");
 const album = JSON.parse(localStorage.getItem("cartas") || "[]");
 const api= JSON.parse(localStorage.getItem("api") || "[]");
 const API_KEY = "860c8c57-3c2e-4e8e-b99b-b51ffe872731";
-let apidata=[];
 
 function numeroRandom(max) {
   return Math.floor(Math.random() * max);
 }
 
-function cargarApi() {
-  for (let index = 1; index < 76; index++) {
-    fetch(`https://api.pokemontcg.io/v2/cards?page=${index}`, {
-      headers: {
-        "X-Api-Key": API_KEY,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        apidata = data.data;
-      });
-    
+/* function cargarApi() {
+  if(localStorage.getItem("apidata")===null){
+    for (let index = 0; index < 76; index++) {
+      fetch(`https://api.pokemontcg.io/v2/cards?page=${index+1}`, {
+        headers: {
+          "X-Api-Key": API_KEY,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          apidata[index] = data.data;
+          localStorage.setItem("apidata", JSON.stringify(apidata))
+        });
+      
+    }
   }
-}
+  
+} */
 
 function cartaAl() {
   loading.style.display = "block";
@@ -49,8 +52,6 @@ function cartaAl() {
       localStorage.setItem("cartas", JSON.stringify(album));
     });
 }
-cargarApi();
-console.log(apidata)
 sobre.addEventListener("click", () => {
   sobre.classList.add("girar");
   setTimeout(() => {
